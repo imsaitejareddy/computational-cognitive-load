@@ -1,0 +1,18 @@
+{
+  "qa_item": {
+    "source_docs": {
+      "MSFT_FY23_REPORT": "For the fiscal year ending June 30, 2023, Microsoft's Cloud division reported revenues of $82.5 billion. The company employed 221,000 people at the end of this fiscal year.",
+      "MSFT_FY22_REPORT": "For the fiscal year ending June 30, 2022, Microsoft's Cloud division reported revenues of $71.4 billion. The number of employees at the end of fiscal 2022 was 218,000.",
+      "ACQUISITION_ANNOUNCEMENT": "Microsoft officially completed its acquisition of Nuance Communications on March 4, 2022. The deal was valued at $19.7 billion."
+    },
+    "question": "Calculate the year-over-year revenue growth for Microsoft's Cloud division for the fiscal year that ended AFTER the Nuance Communications acquisition was completed. Provide the answer in billions of dollars.",
+    "ground_truth": "11.1 billion"
+  },
+  "filler_text": {
+    "irrelevant": "Global markets saw a surge in commodity prices today, with copper reaching a new high. The tech sector remained flat as investors await the upcoming jobs report. Federal employment dropped 15,000 jobs...",
+    "relevant_masked": "Analysts noted that Microsoft's R&D spending, which reached [REDACTED_VALUE] in FY2023, reflects its major investments in AI and cloud infrastructure following the Activision Blizzard deal announcement..."
+  },
+  "distractor_task": {
+    "task": "You are presented with four cards on a table. Each card has a letter on one side and a number on the other. The cards show: A, D, 3, 7. Your task is to determine which card(s) you must turn over to test the rule: 'If a card has a vowel on one side, then it must have an even number on the other side.' Explain your reasoning."
+  }
+}
