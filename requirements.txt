@@ -1,0 +1,14 @@
+torch==2.3.1
+torchvision==0.18.1
+torchaudio==2.3.1
+transformers==4.43.3
+accelerate==0.32.1
+bitsandbytes==0.43.1
+triton==2.3.1
+google-generativeai==0.7.2
+openai==1.35.13
+httpx==0.27.0
+pandas==2.2.2
+scipy
+statsmodels
+matplotlib
