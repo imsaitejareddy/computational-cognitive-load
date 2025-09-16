@@ -17,7 +17,7 @@ The scaling of Large Language Models (LLMs) has exposed a critical gap between p
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/computational-cognitive-load.git](https://github.com/YOUR_USERNAME/computational-cognitive-load.git)
+    git clone [https://github.com/imsaitejareddy/computational-cognitive-load.git](https://github.com/imsaitejareddy/computational-cognitive-load.git)
     cd computational-cognitive-load
     ```
 
@@ -66,7 +66,7 @@ If you use this research or code in your work, please cite our paper:
 ```bibtex
 @article{CognitiveLoad2025,
   title={Computational Limits in Artificial Intelligence: A Theory of Cognitive Load},
-  author={[Author 1] and [Author 2]},
+  author={[Sai Teja Reddy Adapala],
   journal={To Be Determined},
   year={2025}
 }
