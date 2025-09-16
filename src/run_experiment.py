@@ -37,15 +37,15 @@ def load_local_model(model_id, token):
     print(f"Successfully loaded {model_id}.")
 
 def build_prompt(condition, qa_item, filler, distractor, irrelevance_percent=50):
-    docs, prompt = list(qa_item["source_docs"].values()), "You are an expert financial analyst...\\n\\n"
+    docs, prompt = list(qa_item["source_docs"].values()), "You are an expert financial analyst...\n\n"
     if condition == 'Control':
-        for doc in docs: prompt += f"--- DOCUMENT ---\\n{doc}\\n\\n"
+        for doc in docs: prompt += f"--- DOCUMENT ---\n{doc}\n\n"
     elif condition == 'LongContextControl':
-        for doc in docs: prompt += f"--- DOCUMENT ---\\n{doc}\\n\\n--- ANALYST COMMENTARY ---\\n{(filler['relevant_masked'] * 10)[:2000]}\\n\\n"
+        for doc in docs: prompt += f"--- DOCUMENT ---\n{doc}\n\n--- ANALYST COMMENTARY ---\n{(filler['relevant_masked'] * 10)[:2000]}\n\n"
     elif condition == 'ContextSaturation':
-        for doc in docs: prompt += f"--- DOCUMENT ---\\n{doc}\\n\\n--- ECONOMIC NEWS ---\\n{(filler['irrelevant'] * 10)[:int(4000 * (irrelevance_percent / 100))]}\\n\\n"
+        for doc in docs: prompt += f"--- DOCUMENT ---\n{doc}\n\n--- ECONOMIC NEWS ---\n{(filler['irrelevant'] * 10)[:int(4000 * (irrelevance_percent / 100))]}\n\n"
     elif condition == 'AttentionalResidue':
-        for doc in docs: prompt += f"--- DOCUMENT ---\\n{doc}\\n\\n--- INTERMEDIATE TASK ---\\n{distractor['task']}\\n\\n--- END TASK ---\\n\\n"
+        for doc in docs: prompt += f"--- DOCUMENT ---\n{doc}\n\n--- INTERMEDIATE TASK ---\n{distractor['task']}\n\n--- END TASK ---\n\n"
     prompt += f"FINAL QUESTION: {qa_item['question']}"
     return prompt
 
@@ -95,7 +95,15 @@ def main(args):
 
     # --- Main Experiment Loop ---
     results = []
-    models_to_test = ["gpt-4o", "gemini-1.5-pro", "meta-llama/Meta-Llama-3-8B-Instruct", "mistralai/Mistral-7B-Instruct-v0.2", "meta-llama/Meta-Llama-3-70B-Instruct"]
+    # Updated model list to exclude models with API errors and include the latest available models.
+    # Replaced GPT-4o with GPT-4.1 and Gemini 1.5 Pro with Gemini 2.0 Flash.
+    models_to_test = [
+        "gpt-4.1",
+        "gemini-2.0-flash",
+        "meta-llama/Meta-Llama-3-8B-Instruct",
+        "mistralai/Mistral-7B-Instruct-v0.2",
+        "meta-llama/Meta-Llama-3-70B-Instruct",
+    ]
     conditions = ['Control', 'LongContextControl', 'ContextSaturation', 'AttentionalResidue']
     
     print(f"Starting definitive experiment with {args.num_replications} replications...")
